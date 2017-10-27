@@ -18,8 +18,13 @@ export class HeroService {
 		})
 	}
 
+	getHero(id: number): Promise<Hero> {
 
-
+		return this.getHeroes().then(heroes => {
+			return heroes.find(hero => hero.id === id);
+		});
+	}
+	
   constructor() { }
 
 }
