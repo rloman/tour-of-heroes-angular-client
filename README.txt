@@ -8,3 +8,10 @@ file should now (after styling) look like this: https://angular.io/generated/liv
 
 to add the "angular-in-memory-web-api" I (Raymond) had to supply the following command:
 $ npm install angular-in-memory-web-api --save
+
+Be aware (written by me)
+==> You have to be aware of the order of the imports in the app.module file.        And you have to change in
+    the hero.service.ts file that there is no .data() after heroes.response.data().
+    Please correct this sentences later. (since we have to leave now ...)
+
+    Shortented: it now works :-)
