@@ -6,6 +6,8 @@ export class InMemoryDataService implements InMemoryDbService {
 
   createDb() {
 
+    // I think (!) that this variable name is/should be the same as the end of the url in the corresponding (hero) service
+    // e.g. const heroes -> hence url in hero.service should be /api/heroes
     const heroes = [
       { id: 0,  name: 'Zero' },
       { id: 11, name: 'Mr. Nice' },
