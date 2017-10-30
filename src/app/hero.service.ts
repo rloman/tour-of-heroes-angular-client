@@ -19,7 +19,7 @@ export class HeroService {
 
 		return this.http.get(this.heroesUrl)
 			.toPromise()
-			.then(response => response.json() as Hero[]) // you might think that .json().data() should be used but without it, it works
+			.then(response => response.json() as Hero[]) // you might think that .json().data should be used but without it, it works
 			.catch(this.handleError);
 	}
 
@@ -40,11 +40,10 @@ export class HeroService {
 
 	getHero(id: number): Promise<Hero> {
 
-		return this.getHeroes().then(heroes => {
-			return heroes.find(hero => hero.id === id);
-		});
+		const url = `${this.heroesUrl}/${id}`;
+		return this.http.get(url)
+		  .toPromise()
+		  .then(response => response.json() as Hero)
+		  .catch(this.handleError);
 	}
-
-	
-
 }
