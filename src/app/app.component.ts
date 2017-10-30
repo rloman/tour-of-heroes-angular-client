@@ -13,8 +13,8 @@ const { version: appVersion } = require('../../package.json')
 })
 export class AppComponent {
 
-    title = 'Tour of Heroes';
-    public appVersion;
+    title: string = 'Tour of Heroes';
+    appVersion: string;
 
     constructor() {
 
