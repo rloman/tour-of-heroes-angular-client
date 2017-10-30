@@ -69,4 +69,12 @@ export class HeroService {
 		  // but now I now why it is ... it will in fact return the hero after updating.
 		  .catch(this.handleError);
 	  }
+
+	  delete(id: number): Promise<void> {
+		const url = `${this.heroesUrl}/${id}`;
+		return this.http.delete(url, {headers: this.headers})
+		  .toPromise()
+		  .then(() => null)
+		  .catch(this.handleError);
+	  }
 }
