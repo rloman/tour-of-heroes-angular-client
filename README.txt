@@ -21,3 +21,9 @@ Be aware (written by me)
 
 Add the ability to search by name using this url:
 https://angular.io/tutorial/toh-pt6#observables
+
+
+Use a real http service
+Just change the url in the hero.service
+Remove the following line from app.module
+        InMemoryWebApiModule.forRoot(InMemoryDataService),
