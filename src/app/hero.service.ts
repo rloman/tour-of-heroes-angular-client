@@ -54,7 +54,7 @@ export class HeroService {
 		return this.http
 		  .put(url, JSON.stringify(hero), {headers: this.headers})
 		  .toPromise()
-		  .then(() => hero)
+		  .then(() => hero)  // I don't know why we are using this closure here. Get nothing and do hero? Removing the => hero part here also rocks
 		  .catch(this.handleError);
 	  }
 }
