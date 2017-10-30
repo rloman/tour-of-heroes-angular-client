@@ -15,3 +15,9 @@ Be aware (written by me)
     Please correct this sentences later. (since we have to leave now ...)
 
     Shortented: it now works :-)
+
+
+
+
+Add the ability to search by name using this url:
+https://angular.io/tutorial/toh-pt6#observables
