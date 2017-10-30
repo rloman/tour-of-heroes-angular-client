@@ -16,14 +16,16 @@ export class HeroService {
 	) { }
 
 	getHeroes(): Promise<Hero[]> {
+
 		return this.http.get(this.heroesUrl)
 			.toPromise()
-			.then(response => response.json() as Hero[])
+			.then(response => response.json() as Hero[]) // you might think that .json().data() should be used but without it, it works
 			.catch(this.handleError);
 	}
 
 	private handleError(error: any): Promise<any> {
 		console.error('An error occurred', error); // for demo purposes only
+
 		return Promise.reject(error.message || error);
 	}
 
