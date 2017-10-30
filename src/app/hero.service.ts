@@ -49,12 +49,24 @@ export class HeroService {
 		  .catch(this.handleError);
 	}
 
+
+	// create method uses POST method
+	create(name: string): Promise<Hero> {
+		return this.http
+		  .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+		  .toPromise()
+		  .then(res => res.json() as Hero)
+		  .catch(this.handleError);
+	  }
+
+	  // update method uses PUT method
 	update(hero: Hero): Promise<Hero> {
 		const url = `${this.heroesUrl}/${hero.id}`;
 		return this.http
 		  .put(url, JSON.stringify(hero), {headers: this.headers})
 		  .toPromise()
 		  .then(() => hero)  // I don't know why we are using this closure here. Get nothing and do hero? Removing the => hero part here also rocks
+		  // but now I now why it is ... it will in fact return the hero after updating.
 		  .catch(this.handleError);
 	  }
 }
