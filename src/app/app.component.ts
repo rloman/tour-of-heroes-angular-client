@@ -1,4 +1,10 @@
 import { Component } from '@angular/core';
+declare function require(moduleName: string): any;
+
+const { version: appVersion } = require('../../package.json')
+// this loads package.json
+// then you destructure that object and take out the 'version' property from it
+// and finally with ': appVersion' you rename it to const appVersion
 
 @Component({
  selector: 'my-app',
@@ -6,5 +12,13 @@ import { Component } from '@angular/core';
  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- title = 'Tour of Heroes';
+
+    title = 'Tour of Heroes';
+    public appVersion;
+
+    constructor() {
+
+        this.appVersion = appVersion;
+
+    }
 }
