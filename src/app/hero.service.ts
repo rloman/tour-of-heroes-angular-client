@@ -8,8 +8,10 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class HeroService {
 
-	private heroesUrl = "http://www.filltext.com/?rows=10&id={index}&name={username}";  // URL to web api
-
+	// private heroesUrl = 'http://www.filltext.com/?rows=10&id={index}&name={username}';  // URL to web api
+	// for mocking please use this url:
+	// 'api/heroes';
+	private heroesUrl = 'api/heroes';  // URL to web api
 	private headers = new Headers({'Content-Type': 'application/json'});
 
 	constructor(
