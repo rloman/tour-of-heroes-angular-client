@@ -10,7 +10,7 @@ export class HeroService {
 
 	private headers = new Headers({'Content-Type': 'application/json'});
 
-	private heroesUrl = 'http://www.filltext.com/?rows=10&id={index}&name={username}';  // URL to web api
+	private heroesUrl = 'http://localhost:8080/api/heroes';  // URL to web api
 
 	// for mocking please use this url:
 	// 'api/heroes';
