@@ -5,60 +5,61 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
+  moduleId: module.id,
   selector: 'my-heroes',
   templateUrl: './heroes.component.html',
-  styleUrls: ['./heroes.component.css']
+  styleUrls: ['./heroes.component.css'],
+  providers: [HeroService]
+
 })
-
 export class HeroesComponent implements OnInit {
+    heroes: Hero[];
+    selectedHero: Hero;
 
-  heroes: Hero[];
-  selectedHero: Hero;
+    constructor(private router: Router, private heroService: HeroService){ }
 
-  constructor(
-    private heroService: HeroService,
-    private router: Router) {
+    ngOnInit(): void {
+      this.getHeroes();
   }
 
-  ngOnInit(): void {
-    this.getHeroes();
-  }
-
-  gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedHero.id]);
-  }
-
-  onSelect(hero: Hero): void {
-    this.selectedHero = hero;
-  }
-
-  getHeroes(): void {
-    this.heroService.getHeroes().
-      then(heroes => { this.heroes = heroes },
-      error => {
+    getHeroes(): void {
+      this.heroService.getHeroes()
+      .then(
+        heroes => this.heroes = heroes,
+        error => {
         this.router.navigate(['login']);
         console.error('An error occurred in heroes component, navigating to login: ', error);
-      }
-      );
+        }
+      )
+  }
+
+
+    onSelect(hero: Hero): void {
+        this.selectedHero = hero;
+    }
+
+    gotoDetail(): void {
+      this.router.navigate(['/detail', this.selectedHero.id]);
   }
 
   add(name: string): void {
     name = name.trim();
-    if (name) {
-      this.heroService.create(name)
-        .then(hero => {
-          this.heroes.push(hero);
-          this.selectedHero = null;
-        });
-    }
+    if(!name) { return; }
+    this.heroService.create(name)
+      .then(hero => {
+        this.heroes.push(hero);
+        this.selectedHero = null;
+      });
   }
 
   delete(hero: Hero): void {
-    this.heroService
+      this.heroService
       .delete(hero.id)
       .then(() => {
-        this.heroes = this.heroes.filter(h => h !== hero);
-        if (this.selectedHero === hero) { this.selectedHero = null; }
+          this.heroes = this.heroes.filter(h => h !== hero);
+          if(this.selectedHero === hero) {
+            this.selectedHero = null;
+        }
       });
   }
 }
