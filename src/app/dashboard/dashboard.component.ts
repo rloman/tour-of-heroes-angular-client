@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   moduleId: module.id,
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html',
+  providers: [HeroService],
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
