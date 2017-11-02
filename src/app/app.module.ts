@@ -17,6 +17,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { AuthenticationService} from './authentication.service';
 
 
 
@@ -37,7 +38,7 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     LoginComponent
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService, AuthenticationService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
