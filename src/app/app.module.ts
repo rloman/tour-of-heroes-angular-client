@@ -16,6 +16,8 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService} from './authentication.service';
 
 
 
@@ -33,9 +35,10 @@ import { HomeComponent } from './home/home.component';
     HeroDetailComponent,
     HeroesComponent,
     HeroSearchComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService, AuthenticationService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

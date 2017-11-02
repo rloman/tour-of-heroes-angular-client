@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Hero } from './hero';
 import { Http, Headers } from '@angular/http';
+import { AuthenticationService } from './authentication.service';
 
 
 import 'rxjs/add/operator/toPromise';
@@ -8,22 +9,24 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class HeroService {
 
-	private headers = new Headers({'Content-Type': 'application/json'});
+	private headers = new Headers(
+		{'Content-Type': 'application/json', 'Authorization': 'Bearer '+this.authenticationService.getToken()},
+	);
 
-	private heroesUrl = 'http://localhost:8080/api/heroes';  // URL to web api
+	private heroesUrl = 'http://localhost:8080/heroes';  // URL to web api
 
 	// for mocking please use this url:
 	// 'api/heroes';
 	// private heroesUrl = 'api/heroes';  // URL to web api
 
 	constructor(
-		private http: Http
-
+		private http: Http,
+		private authenticationService: AuthenticationService
 	) { }
 
 	getHeroes(): Promise<Hero[]> {
 
-		return this.http.get(this.heroesUrl)
+		return this.http.get(this.heroesUrl, {headers: this.headers})
 			.toPromise()
 			.then(response => response.json() as Hero[]) // you might think that .json().data should be used but without it, it works
 			.catch(this.handleError);
