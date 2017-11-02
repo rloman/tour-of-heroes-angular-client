@@ -33,7 +33,13 @@ export class HeroesComponent implements OnInit {
   }
 
   getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
+    this.heroService.getHeroes().
+      then(heroes => { this.heroes = heroes },
+      error => {
+        this.router.navigate(['login']);
+        console.error('An error occurred in heroes component, navigating to login: ', error);
+      }
+      );
   }
 
   add(name: string): void {
@@ -49,10 +55,10 @@ export class HeroesComponent implements OnInit {
 
   delete(hero: Hero): void {
     this.heroService
-        .delete(hero.id)
-        .then(() => {
-          this.heroes = this.heroes.filter(h => h !== hero);
-          if (this.selectedHero === hero) { this.selectedHero = null; }
-        });
+      .delete(hero.id)
+      .then(() => {
+        this.heroes = this.heroes.filter(h => h !== hero);
+        if (this.selectedHero === hero) { this.selectedHero = null; }
+      });
   }
 }
