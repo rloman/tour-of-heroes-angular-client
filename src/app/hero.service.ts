@@ -50,7 +50,7 @@ export class HeroService {
 	getHero(id: number): Promise<Hero> {
 
 		const url = `${this.heroesUrl}/${id}`;
-		return this.http.get(url)
+		return this.http.get(url, {headers: this.headers})
 		  .toPromise()
 		  .then(response => response.json() as Hero)
 		  .catch(this.handleError);
