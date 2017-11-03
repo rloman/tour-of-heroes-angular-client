@@ -27,3 +27,7 @@ Use a real http service
 Just change the url in the hero.service
 Remove the following line from app.module
         InMemoryWebApiModule.forRoot(InMemoryDataService),
+
+
+v2.0.0
+	Released v2.0.0 since this is a complete review of it, using real REST api using the springboot rest api project. And hence the update and delete are now failing
