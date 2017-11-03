@@ -31,6 +31,11 @@ export class AuthenticationService {
             }).catch((error:any) => Observable.throw(error.json().error || 'Server error'));
     }
 
+    isLoggedIn(): boolean {
+      var token: String = this.getToken();
+      return token && token.length > 0;
+    }
+
     getToken(): String {
       var currentUser = JSON.parse(localStorage.getItem('currentUser'));
       var token = currentUser && currentUser.token;

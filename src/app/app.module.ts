@@ -19,6 +19,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationService} from './authentication.service';
 
+import { CanActivateGuard } from './can-activate.guard';
+
 
 
 @NgModule({
@@ -38,7 +40,7 @@ import { AuthenticationService} from './authentication.service';
     HomeComponent,
     LoginComponent
   ],
-  providers: [ HeroService, AuthenticationService ],
+  providers: [ HeroService, AuthenticationService, CanActivateGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
