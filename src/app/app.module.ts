@@ -15,6 +15,11 @@ import { AppRoutingModule }     from './app-routing.module';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { AuthenticationService} from './authentication.service';
+
+import { CanActivateGuard } from './can-activate.guard';
 
 
 
@@ -31,9 +36,11 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
     DashboardComponent,
     HeroDetailComponent,
     HeroesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    HomeComponent,
+    LoginComponent
   ],
-  providers: [ HeroService ],
+  providers: [ HeroService, AuthenticationService, CanActivateGuard],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

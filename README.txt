@@ -27,3 +27,24 @@ Use a real http service
 Just change the url in the hero.service
 Remove the following line from app.module
         InMemoryWebApiModule.forRoot(InMemoryDataService),
+
+
+Added a lot of security using URls
+- https://chariotsolutions.com/blog/post/angular-2-spring-boot-jwt-cors_part1/
+- https://chariotsolutions.com/blog/post/angular-2-spring-boot-jwt-cors_part2/
+(and more inline urls)
+
+
+v2.0.0
+	Released v2.0.0 since this is a complete review of it, using real REST api using the springboot rest api project. And hence the update and delete are now failing
+      Add (working) HomeComponent
+      Add login component
+      Amend login component to stefan his example on the url
+      Add AuthenticationService. Modify the other component to have the AuthenticationService
+      Add headers and USE THEM when sending GET request. Please continue with POST and DELETE
+      When not logged in (hence error in authentication.service) please redirect to login
+      copied the code from the site and it works. I forgot to add the provider (and that was a year ago the same :-))
+      clean up the code again
+      Wat krijg je een raar programma als je de heroService niet insluit als provider. Dan gaat het goed; eng dit
+      Add Can Activate AuthGuard to prevent a REST API call being made, which is than invalid (401) and showing the login screen. This feature prevents being an invalid api call beint made
+
