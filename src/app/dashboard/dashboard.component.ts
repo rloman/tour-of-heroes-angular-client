@@ -4,7 +4,6 @@ import { HeroService } from '../hero.service';
 import { Router } from '@angular/router';
 
 @Component({
-  moduleId: module.id,
   selector: 'my-dashboard',
   templateUrl: './dashboard.component.html',
   providers: [HeroService],
